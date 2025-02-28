@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listado de TODAS las Visitas!{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        background-color: #121212; /* Fondo oscuro */
+        color: #e0e0e0; /* Texto claro */
+        font-family: 'Arial', sans-serif;
+    }
+
+    .example-wrapper {
+        margin: 2em auto;
+        max-width: 800px;
+        width: 95%;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #1e1e1e; /* Fondo oscuro más claro */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .example-wrapper h1 {
+        font-size: 1.8em;
+        color: #64ffda; /* Verde llamativo */
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    .example-wrapper ul {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+    }
+
+    .example-wrapper ul li {
+        padding: 10px;
+        margin: 5px 0;
+        background: #2a2a2a; /* Fondo para los elementos de la lista */
+        border-radius: 5px;
+        text-align: center;
+        transition: background-color 0.3s ease;
+    }
+
+    .example-wrapper ul li:hover {
+        background: #6a0dad; /* Color morado para el hover */
+        color: white;
+    }
+
+    .example-wrapper a {
+        text-decoration: none;
+    }
+
+    .example-wrapper a button {
+        background-color: #6a0dad; /* Morado */
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        margin: 10px 0;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .example-wrapper a button:hover {
+        background-color: #00bfff; /* Azul claro para hover */
+        transform: scale(1.05);
+    }
+
+    .alert {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        color: #121212;
+    }
+
+    .alert-success {
+        background-color: #64ffda; /* Verde claro */
+    }
+
+    .alert-error {
+        background-color: #ff6b6b; /* Rojo claro */
+    }
+</style>
+
+<div class="example-wrapper">
+    <h1>Listado de TODAS las Visitas!! ✅</h1>
+
+    <a href="{{ path('index') }}">
+        <button>Atrás</button>
+    </a>
+
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ type }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <ul>
+        {% for visita in visitas %}
+            <a href="{{ path('mostrar_uno_visita', { "idVisita": visita.getId() }) }}">
+                <li>{{ visita.getRestaurante().getNombre() }}</li>
+            </a>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ path('crear_visita') }}">
+        <button>Crear Nueva Visita</button>
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detalle de una Visita!{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        background-color: #121212; 
+        color: #e0e0e0;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .example-wrapper {
+        margin: 2em auto;
+        max-width: 800px;
+        width: 95%;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #1e1e1e; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .example-wrapper h1 {
+        font-size: 1.8em;
+        color: #64ffda;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    .example-wrapper ul {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+    }
+
+    .example-wrapper ul li {
+        padding: 10px;
+        margin: 5px 0;
+        background: #2a2a2a; 
+        border-radius: 5px;
+        text-align: center;
+        transition: background-color 0.3s ease;
+    }
+
+    .example-wrapper ul li:hover {
+        background: #6a0dad; 
+        color: white;
+    }
+
+    .example-wrapper a {
+        text-decoration: none;
+    }
+
+    .example-wrapper a button {
+        background-color: #6a0dad; 
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        margin: 10px 0;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .example-wrapper a button:hover {
+        background-color: #00bfff;
+        transform: scale(1.05);
+    }
+
+    .example-wrapper a li {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #6a0dad;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .example-wrapper a li:hover {
+        background-color: #00bfff;
+        transform: scale(1.05);
+    }
+</style>
+
+<div class="example-wrapper">
+    <h1>Información detallada de la visita</h1>
+    
+    <a href="{{ path('mostrar_todos_visitas') }}">
+        <button>Atrás</button>
+    </a>
+
+    <ul>
+        <li><strong>Restaurante:</strong> {{ visita.getRestaurante().getNombre() }}</li>
+        <li><strong>Valoración:</strong> {{ visita.getValoracion() }}</li>
+        
+        {% if visita.getComentario() != null %}
+            <li><strong>Comentario:</strong> {{ visita.getComentario() }}</li>
+        {% endif %}
+    </ul>
+
+    <a href="{{ path('actualizar_visita', { "idVisita": visita.getId() }) }}">
+        <li>Actualizar información de la visita</li>
+    </a>
+    <a href="{{ path('eliminar_visita', { "idVisita": visita.getId() }) }}">
+        <li>Eliminar visita</li>
+    </a>
+</div>
+{% endblock %}

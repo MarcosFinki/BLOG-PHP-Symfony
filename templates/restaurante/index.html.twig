@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BLOG!{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .example-wrapper {
+        margin: 2em auto;
+        max-width: 800px;
+        width: 95%;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #1e1e1e;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .example-wrapper h1 {
+        font-size: 1.8em;
+        color: #64ffda; 
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    .example-wrapper ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .example-wrapper ul a {
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 5px;
+        background: linear-gradient(90deg, #6a0dad, #00bfff);
+        color: #fff;
+        text-align: center;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .example-wrapper ul a:hover {
+        background: #64ffda;
+        color: #121212;
+        transform: scale(1.05);
+    }
+</style>
+
+<div class="example-wrapper">
+    <h1>Bienvenido al Blog Sobre Restaurantes Más Grande del Mundo ✅</h1>
+
+    <ul>
+        <a href="{{ path('mostrar_todos_restaurantes') }}">
+            <li>Mostrar Restaurantes</li>
+        </a>
+        <a href="{{ path('mostrar_todos_visitas') }}">
+            <li>Mostrar Visitas</li>
+        </a>
+    </ul>
+</div>
+{% endblock %}

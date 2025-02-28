@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Creando una nueva Visita!{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        background-color: #121212; 
+        color: #e0e0e0;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .example-wrapper {
+        margin: 2em auto;
+        max-width: 800px;
+        width: 95%;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #1e1e1e; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .example-wrapper h1 {
+        font-size: 1.8em;
+        color: #64ffda; 
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    .example-wrapper a button {
+        background-color: #6a0dad; 
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        margin: 10px 0;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .example-wrapper a button:hover {
+        background-color: #00bfff; 
+        transform: scale(1.05);
+    }
+
+    .alert {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        color: #121212;
+        text-align: center;
+    }
+
+    .alert-success {
+        background-color: #64ffda; 
+    }
+
+    .alert-error {
+        background-color: #ff6b6b;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    form input, form textarea, form select, form button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: none;
+        background-color: #2a2a2a;
+        color: white;
+        font-size: 1em;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    form input:focus, form textarea:focus, form select:focus {
+        outline: none;
+        background-color: #6a0dad;
+        color: white;
+    }
+
+    form button {
+        background-color: #64ffda; 
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+        background-color: #00bfff;
+    }
+</style>
+
+<div class="example-wrapper">
+    <h1>Creando nueva visita!</h1>
+    
+    <hr>
+    <a href="{{ path('mostrar_todos_visitas') }}">
+        <button>Atrás</button>
+    </a>
+
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ type }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    {{ form(formulario) }}
+</div>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualizar info Restaurante!{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        background-color: #121212; 
+        color: #e0e0e0;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .example-wrapper {
+        margin: 2em auto;
+        max-width: 800px;
+        width: 95%;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #1e1e1e; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .example-wrapper h1 {
+        font-size: 1.8em;
+        color: #64ffda;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    .example-wrapper hr {
+        border: 0;
+        height: 1px;
+        background: #6a0dad;
+        margin: 20px 0;
+    }
+
+    .example-wrapper a button {
+        background-color: #6a0dad;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        margin: 10px 0;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .example-wrapper a button:hover {
+        background-color: #00bfff; 
+        transform: scale(1.05);
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    form div {
+        margin-bottom: 15px;
+    }
+
+    form label {
+        display: block;
+        margin-bottom: 5px;
+        color: #64ffda;
+    }
+
+    form input,
+    form textarea,
+    form select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #6a0dad;
+        border-radius: 5px;
+        background: #2a2a2a;
+        color: #e0e0e0;
+    }
+
+    form input:focus,
+    form textarea:focus,
+    form select:focus {
+        outline: none;
+        border-color: #00bfff; 
+        box-shadow: 0 0 5px #00bfff;
+    }
+
+    form button {
+        background-color: #64ffda;
+        color: #121212;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    form button:hover {
+        background-color: #6a0dad;
+        transform: scale(1.05);
+    }
+</style>
+
+<div class="example-wrapper">
+    <h1>Actualizando la información del restaurante!</h1>
+    
+    <hr>
+    
+    <a href="{{ path('mostrar_todos_restaurantes') }}">
+        <button>Atrás</button>
+    </a>
+
+    {{ form(formulario) }}
+</div>
+{% endblock %}

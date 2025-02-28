@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detalle de un Restaurante!{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        background-color: #121212; 
+        color: #e0e0e0; 
+        font-family: 'Arial', sans-serif;
+    }
+
+    .example-wrapper {
+        margin: 2em auto;
+        max-width: 800px;
+        width: 95%;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #1e1e1e;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .example-wrapper h1 {
+        font-size: 1.8em;
+        color: #64ffda;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    .example-wrapper ul {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+    }
+
+    .example-wrapper ul li {
+        padding: 10px;
+        margin: 5px 0;
+        background: #2a2a2a;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .example-wrapper ul li:hover {
+        background: #6a0dad;
+        color: white;
+        transition: background-color 0.3s ease;
+    }
+
+    .example-wrapper a {
+        text-decoration: none;
+        display: block;
+        margin: 10px 0;
+    }
+
+    .example-wrapper a button,
+    .example-wrapper a li {
+        background-color: #6a0dad;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .example-wrapper a button:hover,
+    .example-wrapper a li:hover {
+        background-color: #00bfff;
+        transform: scale(1.05);
+    }
+</style>
+
+<div class="example-wrapper">
+    <h1>Información detallada del restaurante</h1>
+
+    <a href="{{ path('mostrar_todos_restaurantes') }}">
+        <button>Atrás</button>
+    </a>
+
+    <ul>
+        <li>{{ restaurante.getNombre() }}</li>
+        <li>{{ restaurante.getDireccion() }}</li>
+        {% if restaurante.getTelefono() != null %}
+            <li>Teléfono: {{ restaurante.getTelefono() }}</li>
+        {% endif %}
+        
+        {% if restaurante.getTipoDeCocina() != null %}
+            <li>Tipo de Cocina: {{ restaurante.getTipoDeCocina() }}</li>
+        {% endif %}
+    </ul>
+
+    <a href="{{ path('actualizar_restaurante', { "idRestaurante": restaurante.getId() }) }}">
+        <li>Actualizar información del restaurante</li>
+    </a>
+    <a href="{{ path('eliminar_restaurante', { "idRestaurante": restaurante.getId() }) }}">
+        <li>Eliminar restaurante</li>
+    </a>
+</div>
+{% endblock %}
